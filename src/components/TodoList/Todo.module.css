@@ -1,0 +1,9 @@
+.btn{
+    margin-left: 10px;
+}
+
+.items{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+}
