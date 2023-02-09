@@ -10,17 +10,17 @@ function App() {
   const [todo,setTodo] = useState([{
     id:1,
     status: true,
-    name: "first list"
+    name: "First list"
   },
   {
     id:2,
     status: true,
-    name: "secons list"
+    name: "Second list"
   },
   {
     id:3,
     status: true,
-    name: "third list"
+    name: "Third list"
   },])
 
 

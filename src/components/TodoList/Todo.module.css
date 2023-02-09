@@ -7,3 +7,13 @@
     justify-content: space-between;
     margin-top: 15px;
 }
+
+
+.stat{
+    text-decoration:line-through;
+}
+
+.icons{
+    width: 20px;
+    height: 20px;
+}

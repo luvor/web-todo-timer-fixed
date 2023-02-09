@@ -1,6 +1,11 @@
 import React, { useState } from 'react'
 import { Button } from 'react-bootstrap'
 import s from './Todo.module.css'
+import open from '../icons/unlock.png'
+import close from '../icons/padlock.png'
+import edit from '../icons/edit.png'
+import delet from '../icons/delete.png'
+
 
 const TodoList = ({todo,setTodo}) => {
 
@@ -50,7 +55,7 @@ const TodoList = ({todo,setTodo}) => {
           change ==item.id ? <div>
             <input value={value} onChange = {(e)=>setValue(e.target.value)} />
           </div> :
-          <div>{item.name}</div> 
+          <div className={!item.status? s.stat: ''} >{item.name}</div> 
 
           
         }
@@ -59,9 +64,13 @@ const TodoList = ({todo,setTodo}) => {
           <Button className={s.btn} variant="outline-danger" onClick={()=>saveChanges(item.id)} >Save</Button>
         </div> :
        <div>
-         <Button className={s.btn} variant="outline-danger" onClick={()=>deleteItem(item.id)}>Delete</Button>
-        <Button className={s.btn} variant="outline-danger" onClick={()=>changeItem(item.id, item.name)}>Change</Button>
-        <Button className={s.btn} variant="outline-danger" onClick={()=>closeItem(item.id)}>Close</Button>
+         <Button className={s.btn} variant="outline-danger" onClick={()=>deleteItem(item.id)}><img className={s.icons} src={delet} ></img></Button>
+        <Button className={s.btn} variant="outline-danger" onClick={()=>changeItem(item.id, item.name)}><img className={s.icons} src={edit} ></img></Button>
+        <Button className={s.btn} variant="outline-danger" onClick={()=>closeItem(item.id)}>
+          {
+            item.status ? <div><img className={s.icons} src={close} ></img></div> : <div><img className={s.icons} src={open} ></img></div>
+          }
+          </Button>
        </div>  
         }
        
