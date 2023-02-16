@@ -1,49 +1,43 @@
 import React, { useState } from "react";
-import { Button, Col, FormControl, Row } from "react-bootstrap";
-import { v1 as uuidv1 } from "uuid";
 import s from "./TodoForm.module.css";
 
 const TodoForm = ({ todo, setTodo }) => {
   const [value, setValue] = useState();
+  const [opt, setOpt] = useState();
 
-  function addList() {
-    if (value != "" && value != null) {
+  function addItem() {
+    if (value != "" && value != null && opt != undefined) {
       setTodo([
         ...todo,
         {
-          id: uuidv1(),
-          status: true,
+          id: 5,
           name: value,
+          status: true,
+          type: opt,
         },
       ]);
-      setValue("");
     }
   }
-
   const handleKeyUp = (e) => {
-    if (e.key === "Enter") addList();
+    if (e.key === "Enter") addItem();
   };
 
   return (
     <div className={s.form}>
-      <FormControl
-        placeholder="Name"
+      <select onChange={(e) => setOpt(e.target.value)}>
+        <option value="">Option</option>
+        <option value={"work"}>Work</option>
+        <option value={"hobby"}>Hobby</option>
+        <option value={"study"}>Etc</option>
+      </select>
+      <label>Name</label>
+      <input
         value={value}
         onChange={(e) => setValue(e.target.value)}
         onKeyUp={(e) => handleKeyUp(e)}
-      />
-      <select name="" id="">
-        <option value="">1 day</option>
-        <option value="">2 day</option>
-      </select>
-      <select name="" id="">
-        <option value="">Work</option>
-        <option value="">Train</option>
-        <option value="">Study</option>
-      </select>
-      <Button className={s.btn} variant="outline-secondary" onClick={addList}>
-        Add
-      </Button>
+      ></input>
+
+      <button onClick={addItem}>Add List</button>
     </div>
   );
 };

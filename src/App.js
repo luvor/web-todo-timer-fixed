@@ -1,10 +1,10 @@
 import './App.css';
 import Header from './components/TodoHeader/Header';
-
-import TodoList from './components/TodoList/TodoList';
 import { useState } from 'react';
-import { Container } from 'react-bootstrap';
 import TodoForm from './components/TodoForm/TodoForm';
+
+import Block2 from './components/Block2/block2';
+import Clock from './components/Clock/Clock';
 
 function App() {
   const [todo,setTodo] = useState([{
@@ -25,19 +25,21 @@ function App() {
     name: "Third list",
     type: "work"
   },])
-
-
+  
   return (
     <div className='container'>
         <Header/>
         <section className='main'>
           <div className='left_side'>
-            <TodoForm todo = {todo} setTodo = {setTodo}/>
+          <TodoForm todo={todo} setTodo={setTodo}/>
+        
           </div>
+          <Block2 todo={todo} setTodo={setTodo}/>
           <div className='right_side'>
-            <TodoList todo = {todo} setTodo = {setTodo} />
+           
           </div>
         </section>
+        <Clock/>
     </div>
       
     
