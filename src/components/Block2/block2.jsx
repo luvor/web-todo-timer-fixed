@@ -1,9 +1,8 @@
 import React from "react";
-
+import s from "./block2.module.css";
 const Block2 = (props) => {
-  console.log(props.todo);
   return (
-    <div className="block2">
+    <div className={s.block2}>
       <div>Process</div>
       {props.todo.map((item) => (
         <div key={item.id}>
